@@ -1,0 +1,19 @@
+# catalog-info.yaml — repo myorg/worker-sincronizacao-ad
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: worker-sincronizacao-ad
+  title: Worker Sync Active Directory
+  description: Sincroniza periodicamente os usuários desligados do AD corporativo para revogar acessos.
+  tags: [java, spring-boot, worker]
+  annotations:
+    github.com/project-slug: myorg/worker-sincronizacao-ad
+spec:
+  type: service
+  lifecycle: production
+  owner: group:squad-identity
+  system: identity-access
+  consumesApis:
+    - asyncapi-auditoria-iam
+  dependsOn:
+    - resource:default/db-usuarios-iam
